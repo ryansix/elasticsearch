@@ -1,0 +1,36 @@
+version: "2.2"
+
+services:
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:${STACK_VERSION:-}
+    cap_add: ["CHOWN", "DAC_OVERRIDE", "SETGID", "SETUID"]
+    cap_drop: ["ALL"]
+    container_name: apm-server
+    user: '0'
+    volumes:
+      - /home/root/elk/elasticsearch/config/certs/ca/ca.crt:/usr/share/apm-server/ca.crt
+      - ./config/apm-server.yml:/usr/share/apm-server/apm-server.yml
+    ports:
+      - ${APM_SERVER_PORT:-}:8200
+    networks:
+      - elk_elastic
+    environment:
+      - apm-server.rum.enabled=true
+      - setup.kibana.host=kibana:5601
+      - setup.template.settings.index.number_of_replicas=0
+      - apm-server.kibana.enabled=true
+      - apm-server.kibana.host=kibana:5601
+      - output.elasticsearch.hosts=["https://192.168.30.7:9200"]
+      - output.elasticsearch.ssl.certificate_authorities=/usr/share/apm-server/ca.crt
+      - output.elasticsearch.username=elastic  # Replace with your username
+      - output.elasticsearch.password=password  # Replace with your password
+    healthcheck:
+      interval: 10s
+      retries: 12
+      test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://localhost:${APM_SERVER_PORT:-}/
+
+
+
+networks:
+  elk_elastic:
+    external: true

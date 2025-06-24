@@ -1,0 +1,29 @@
+apm-server.host: "0.0.0.0:8200"
+
+output.elasticsearch:
+  hosts: ["https://es01:9200"]
+  username: "elastic"
+  password: "password"
+  ssl.certificate_authorities: ["/usr/share/apm-server/ca.crt"]
+  indices:
+  - index: "apm-%{[beat.version]}-sourcemap"
+    when.contains:
+      processor.event: "sourcemap"
+
+  - index: "apm-%{[beat.version]}-error-%{+yyyy.MM.dd}"
+    when.contains:
+      processor.event: "error"
+
+  - index: "apm-%{[beat.version]}-transaction-%{+yyyy.MM.dd}"
+    when.contains:
+      processor.event: "transaction"
+
+  - index: "apm-%{[beat.version]}-span-%{+yyyy.MM.dd}"
+    when.contains:
+      processor.event: "span"
+
+#output.elasticsearch.ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+#output.elasticsearch.ssl.certificate: "/etc/pki/client/cert.pem"
+#output.elasticsearch.ssl.key: "/etc/pki/client/cert.key"
+
+
