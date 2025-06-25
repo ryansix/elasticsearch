@@ -1,0 +1,8 @@
+@ApmAgentRedisSampleApi_HostAddress = http://localhost:5150
+
+GET {{ApmAgentRedisSampleApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{ApmAgentRedisSampleApi_HostAddress}}/Redis/
+Accept: application/json

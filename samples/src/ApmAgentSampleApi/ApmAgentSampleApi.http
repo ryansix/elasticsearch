@@ -1,0 +1,6 @@
+@ApmAgentSampleApi_HostAddress = http://localhost:5258
+
+GET {{ApmAgentSampleApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
