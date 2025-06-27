@@ -1,0 +1,6 @@
+@ElasticWithOpentelemetrySampleApi_HostAddress = http://localhost:5150
+
+GET {{ElasticWithOpentelemetrySampleApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

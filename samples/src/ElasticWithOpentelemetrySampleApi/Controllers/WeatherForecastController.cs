@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
-namespace ApmAgentSampleApi.Controllers
+namespace ElasticWithOpentelemetrySampleApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,16 +17,10 @@ namespace ApmAgentSampleApi.Controllers
         {
             _logger = logger;
         }
-        private ActivitySource ActivitySource = Activity.Current?.Source ?? new ActivitySource(nameof(WeatherForecastController));
-
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            var activity = ActivitySource?.StartActivity("MyMethod");
-
-            activity?.SetTag("custom.tag", "value");
-
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

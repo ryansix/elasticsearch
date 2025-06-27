@@ -4,5 +4,13 @@ GET {{ApmAgentRedisSampleApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
-GET {{ApmAgentRedisSampleApi_HostAddress}}/Redis/
+GET {{ApmAgentRedisSampleApi_HostAddress}}/Redis/GetKey
+Accept: application/json
+
+### Create a new trace using elastic agent
+GET {{ApmAgentRedisSampleApi_HostAddress}}/Redis/CreateNewTraceAsync
+Accept: application/json
+
+### using elastic agent and reuse a existing transaction
+GET {{ApmAgentRedisSampleApi_HostAddress}}/Redis/DistributedTrace?orderno="RN100098231"
 Accept: application/json

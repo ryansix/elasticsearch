@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApmAgentSampleApi", "src\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApmAgentRedisSampleApi", "src\ApmAgentRedisSampleApi\ApmAgentRedisSampleApi.csproj", "{B9B2FB4E-A4EA-42C4-BD1A-A52C5A245E3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticWithOpentelemetrySampleApi", "src\ElasticWithOpentelemetrySampleApi\ElasticWithOpentelemetrySampleApi.csproj", "{EA7FC9D7-4464-4487-8C85-B57F4F3B2E74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B9B2FB4E-A4EA-42C4-BD1A-A52C5A245E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9B2FB4E-A4EA-42C4-BD1A-A52C5A245E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9B2FB4E-A4EA-42C4-BD1A-A52C5A245E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA7FC9D7-4464-4487-8C85-B57F4F3B2E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA7FC9D7-4464-4487-8C85-B57F4F3B2E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA7FC9D7-4464-4487-8C85-B57F4F3B2E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA7FC9D7-4464-4487-8C85-B57F4F3B2E74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
