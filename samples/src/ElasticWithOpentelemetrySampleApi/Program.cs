@@ -1,11 +1,27 @@
-using Elastic.Apm.Api;
 using ElasticWithOpentelemetrySampleApi;
 using ElasticWithOpentelemetrySampleApi.BackgroundServices;
-using System.Diagnostics;
+using System.Diagnostics; 
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
+var source = ActivityHelper.GeneralActivitySource;
+var listener = new ActivityListener
+{
+    ActivityStarted = activity => { },
+    ActivityStopped = activity => { },
+    ShouldListenTo = _ => true,
+    Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllData
+};
 
+ActivitySource.AddActivityListener(listener);
+Activity? act;
+
+
+act= source?.StartActivity("name", ActivityKind.Internal);
+act?.Start();
+var cu = Activity.Current;
+using var activ = source?.StartActivity("myname");
+var cu2 = Activity.Current;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
